@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import App from "./App";
 
 export default function Root(props) {
-  const [lang, setLang] = useState('')
+  const [lang, setLang] = useState(localStorage.getItem('lang'))
 
   useEffect(() => {
+    if(lang === ''){setLang('es')}
+
     function handleLangChanged(event) {
       setLang(event.detail.lang);
-      console.log("evento", event)
     }
 
     window.addEventListener('langDataEvent', handleLangChanged);

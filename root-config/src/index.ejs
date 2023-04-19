@@ -142,6 +142,7 @@
   </script>
   <script>
     function updateCustomProps(lang) {
+      localStorage.setItem('lang', lang)
       const langData = { lang: lang };
       const langEvent = new Event('langDataEvent');
       langEvent.detail = langData;
