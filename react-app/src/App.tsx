@@ -2,15 +2,15 @@ import React from 'react';
 import charactersStates from './characterStates'
 import langStates from './langStates';
 
-export default function App({ name, lang }) {
+export default function Characters({ name, lang }) {
   const { characters, isLoading, currentPage, totalPages, handlePageChange } = charactersStates()
   const { langStatus, langSpecies } = langStates(lang)
 
   const pagination = (
     <div style={{ display: 'flex', justifyContent: 'center', margin: '20px' }}>
-      <button onClick={() => handlePageChange(currentPage - 1)}>Previous</button>
+      <button onClick={() => handlePageChange(currentPage - 1)} data-testid="Previous">Previous</button>
       <p style={{ margin: '0 20px' }}>Page {currentPage} of {totalPages}</p>
-      <button onClick={() => handlePageChange(currentPage + 1)}>Next</button>
+      <button onClick={() => handlePageChange(currentPage + 1)} data-testid="Next">Next</button>
     </div>
   );
 
