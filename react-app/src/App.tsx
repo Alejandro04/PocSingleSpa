@@ -1,32 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { languages } from './langs';
+import React from 'react';
+import charactersStates from './characterStates'
+import langStates from './langStates';
 
 export default function App({ name, lang }) {
-  const [characters, setCharacters] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-
-  useEffect(() => {
-    setIsLoading(true);
-    fetch(`https://rickandmortyapi.com/api/character/?page=${currentPage}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setIsLoading(false);
-        setCharacters(data.results);
-        setTotalPages(data.info.pages);
-      })
-      .catch((error) => console.log(error));
-  }, [currentPage]);
-
-  const langStatus = languages.find(item => item.lang === lang && item.status)?.status;
-  const langSpecies = languages.find(item => item.lang === lang && item.species)?.species;
-
-  const handlePageChange = (page) => {
-    if (page >= 1 && page <= totalPages) {
-      setCurrentPage(page);
-    }
-  }
+  const { characters, isLoading, currentPage, totalPages, handlePageChange } = charactersStates()
+  const { langStatus, langSpecies } = langStates(lang)
 
   const pagination = (
     <div style={{ display: 'flex', justifyContent: 'center', margin: '20px' }}>
