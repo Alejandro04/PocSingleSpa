@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import App from "./App";
+import Character from "./components/charecter";
 
 export default function Root(props) {
   const [lang, setLang] = useState(localStorage.getItem('lang'))
@@ -21,7 +21,7 @@ export default function Root(props) {
 
   return (
     <section style={{ marginTop: 100 }}>
-      <App name="Testapp" lang={lang}/>
+      <Character name="Testapp" lang={lang}/>
     </section>
   );
 }

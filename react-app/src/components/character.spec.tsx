@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import Character from './charecter';
 
-jest.mock('./characterStates', () => ({
+jest.mock('../utils/characterStates', () => ({
   __esModule: true,
   default: jest.fn(() => ({
     characters: [
@@ -20,7 +20,7 @@ jest.mock('./characterStates', () => ({
 
 describe('App', () => {
   test('renders characters', () => {
-    render(<App name="Rick" lang="en" />);
+    render(<Character name="Rick" lang="en" />);
 
     expect(screen.getByText('Rick')).toBeInTheDocument();
     expect(screen.getByText('Morty')).toBeInTheDocument();
