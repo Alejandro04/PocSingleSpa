@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { languages } from "./langs";
 
 function langStates(lang) {
