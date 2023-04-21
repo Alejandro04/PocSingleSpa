@@ -2,6 +2,12 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Character from './charecter';
 
+
+/* 
+TODO: Jest can execute unit test only with js flat files, i means, 
+in the components we have some css class, and that is a problem that i didn't know :O
+*/
+
 jest.mock('../utils/characterStates', () => ({
   __esModule: true,
   default: jest.fn(() => ({
