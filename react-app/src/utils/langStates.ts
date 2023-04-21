@@ -7,8 +7,20 @@ function langStates(lang) {
   const langSpecies = languages.find(
     (item) => item.lang === lang && item.species
   )?.species;
+  const langPrevBtn = languages.find(
+    (item) => item.lang === lang && item.prev
+  )?.prev;
+  const langNextBtn = languages.find(
+    (item) => item.lang === lang && item.next
+  )?.next;
+  const langPage = languages.find(
+    (item) => item.lang === lang && item.page
+  )?.page;
+  const langOf = languages.find(
+    (item) => item.lang === lang && item.of
+  )?.of;
 
-  return { langStatus, langSpecies };
+  return { langStatus, langSpecies, langPrevBtn, langNextBtn, langPage, langOf };
 }
 
 export default langStates;
