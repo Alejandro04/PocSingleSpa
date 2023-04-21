@@ -3,17 +3,24 @@ import charactersStates from "../utils/characterStates";
 import langStates from "../utils/langStates";
 import { PaginationStyles } from "../utils/paginationStyles";
 import { SpinnerStyles } from "../utils/spinnerStyles";
+import { Spinner } from "./spinner";
 
 /*
   TODO: The styles should be implemented with BEM and SASS
 */
 const paginationStyles = new PaginationStyles();
-const spinnerStyles = new SpinnerStyles();
 
 export default function Characters({ name, lang }) {
   const { characters, isLoading, currentPage, totalPages, handlePageChange } =
     charactersStates();
-  const { langStatus, langSpecies, langNextBtn, langPrevBtn, langPage, langOf } = langStates(lang);
+  const {
+    langStatus,
+    langSpecies,
+    langNextBtn,
+    langPrevBtn,
+    langPage,
+    langOf,
+  } = langStates(lang);
 
   const pagination = (
     <div style={paginationStyles.container}>
@@ -37,11 +44,7 @@ export default function Characters({ name, lang }) {
     </div>
   );
 
-  const spinner = (
-    <div style={{ textAlign: "center" }}>
-      <div style={spinnerStyles.greenStyle}></div>
-    </div>
-  );
+  const spinner = Spinner;
 
   return (
     <div>
