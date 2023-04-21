@@ -1,5 +1,8 @@
 # Single-spa app with React and Angular
 
+## Node version
+You need node 12.20.2 for start the app
+
 ## Install the npm packages
 Navigate to the root-config, react-app, and angular-app folders and run the command
 ```js
