@@ -11,7 +11,7 @@ import { LangService } from 'src/app/services/lang.service';
   styleUrls: ['./character.component.css']
 })
 export class CharacterComponent extends Langs implements OnInit, OnChanges, OnDestroy {
-  private charactersSubscription: Subscription = new Subscription;
+  public charactersSubscription: Subscription = new Subscription;
   public characters:Character[] = [];
   public loading = true;
 
