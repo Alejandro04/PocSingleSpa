@@ -32,7 +32,8 @@ $ npm install
   **http://localhost:9000/angular/** -> Angular App
 
 ## Questions
-What is accessibility? How do you achieve it?
+
+## What is accessibility? How do you achieve it?
 
 Accessibility is achieved by thinking about the user, but not in a random way, some laws can be followed. Some time ago I did a post about some UX laws
 
