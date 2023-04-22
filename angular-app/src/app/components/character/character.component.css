@@ -1,0 +1,30 @@
+
+.container{
+    margin-top: 60px;
+}
+.container ul {
+    padding: 0;
+}
+.container ul li{
+    list-style: none;
+    padding: 0 5px 0 5px;
+}
+.card{
+    margin-top: 40px;
+}
+.card-title, .card-text{
+    padding: 0;
+    margin: 0;
+}
+.charactersContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.charactersImgContainer{
+    width: 100%;
+}
+.charactersImgContainer img{
+    width: 100%;
+    height: 200px;
+}
