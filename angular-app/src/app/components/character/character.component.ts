@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, OnChanges, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges, ChangeDetectorRef, SimpleChanges } from '@angular/core';
 import { CharacterService } from 'src/app/services/character.service';
 import { LangService } from 'src/app/services/lang.service';
 import { Subscription } from 'rxjs';
@@ -10,7 +10,7 @@ import langStates from './langStates';
   templateUrl: './character.component.html',
   styleUrls: ['./character.component.css']
 })
-export class CharacterComponent implements OnInit, OnDestroy {
+export class CharacterComponent implements OnInit, OnChanges, OnDestroy {
   private charactersSubscription: Subscription = new Subscription;
   private langSubscription: Subscription = new Subscription;
   public characters:Character[] = [];
@@ -22,10 +22,16 @@ export class CharacterComponent implements OnInit, OnDestroy {
     private characterService: CharacterService,
     private langService: LangService,
     private changeDetectorRef: ChangeDetectorRef
-  ){}
+  ){
+    this.getLang()
+  }
 
   ngOnInit(): void {
     this.getCharacters()
+    this.getLang()
+  }
+
+  ngOnChanges(): void {
     this.getLang()
   }
    
