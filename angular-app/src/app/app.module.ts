@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { APP_BASE_HREF } from '@angular/common';
 import { CharacterComponent } from './components/character/character.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

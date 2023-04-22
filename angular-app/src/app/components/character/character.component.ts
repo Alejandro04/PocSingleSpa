@@ -1,7 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges, ChangeDetectorRef } from '@angular/core';
 import { CharacterService } from 'src/app/services/character.service';
+import { LangService } from 'src/app/services/lang.service';
 import { Subscription } from 'rxjs';
 import { Character } from './character.interface';
+import langStates from './langStates';
 
 @Component({
   selector: 'app-character',
@@ -10,23 +12,34 @@ import { Character } from './character.interface';
 })
 export class CharacterComponent implements OnInit, OnDestroy {
   private charactersSubscription: Subscription = new Subscription;
+  private langSubscription: Subscription = new Subscription;
   public characters:Character[] = [];
   public loading = true;
+  public langActor:string | any;
+  public langHouse:string | any;
 
   constructor(
-    private character: CharacterService
+    private characterService: CharacterService,
+    private langService: LangService,
+    private changeDetectorRef: ChangeDetectorRef
   ){}
 
   ngOnInit(): void {
     this.getCharacters()
+    this.getLang()
   }
-
-  ngOnDestroy(): void {
-   // this.charactersSubscription.unsubscribe()
+   
+  public getLang() {
+    this.langSubscription = this.langService.lang$.subscribe(lang => {
+      const { langActor, langHouse } = langStates(lang);
+      this.langActor = langActor;
+      this.langHouse = langHouse;
+      this.changeDetectorRef.detectChanges();
+    });
   }
 
   public getCharacters(){
-     this.charactersSubscription = this.character.getCharacters().subscribe(
+     this.charactersSubscription = this.characterService.getCharacters().subscribe(
       (characters) => {
         this.characters = characters;
         this.loading = false;
@@ -35,5 +48,10 @@ export class CharacterComponent implements OnInit, OnDestroy {
         //
       }
     );
+  }
+
+  ngOnDestroy(): void {
+    this.charactersSubscription.unsubscribe();
+    this.langSubscription.unsubscribe();
   }
 }
