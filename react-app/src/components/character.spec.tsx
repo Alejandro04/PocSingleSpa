@@ -1,35 +1,46 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import Character from './charecter';
+import { languages } from '../utils/langs';
+import langStates from '../utils/langStates';
 
+describe('languages', () => {
+  test('should contain the correct language objects', () => {
+    const expectedLanguages = [
+      { lang: 'en', status: 'Status' },
+      { lang: 'es', status: 'Estatus' },
+      { lang: 'en', species: 'Species' },
+      { lang: 'es', species: 'Especies' },
+      { lang: 'en', prev: 'Prev' },
+      { lang: 'es', prev: 'Anterior' },
+      { lang: 'en', next: 'Next' },
+      { lang: 'es', next: 'Siguiente' },
+      { lang: 'en', page: 'Page' },
+      { lang: 'es', page: 'Página' },
+      { lang: 'en', of: 'of' },
+      { lang: 'es', of: 'de' }
+    ];
 
-/* 
-TODO: Jest can execute unit test only with js flat files, i means, 
-in the components we have some css class, and that is a problem that i didn't know :O
-*/
+    expect(languages).toEqual(expectedLanguages);
+  });
+  test('should return the correct language states for "en"', () => {
+    const result = langStates('en');
+    expect(result).toEqual({
+      langStatus: 'Status',
+      langSpecies: 'Species',
+      langPrevBtn: 'Prev',
+      langNextBtn: 'Next',
+      langPage: 'Page',
+      langOf: 'of'
+    });
+  });
 
-jest.mock('../utils/characterStates', () => ({
-  __esModule: true,
-  default: jest.fn(() => ({
-    characters: [
-      { id: 1, name: 'Rick', status: 'Alive', species: 'Human', image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg' },
-      { id: 2, name: 'Morty', status: 'Alive', species: 'Human', image: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg' },
-      { id: 3, name: 'Summer', status: 'Alive', species: 'Human', image: 'https://rickandmortyapi.com/api/character/avatar/3.jpeg' },
-    ],
-    isLoading: false,
-    currentPage: 1,
-    totalPages: 1,
-    handlePageChange: jest.fn(),
-  })),
-}));
-
-
-describe('App', () => {
-  test('renders characters', () => {
-    render(<Character name="Rick" lang="en" />);
-
-    expect(screen.getByText('Rick')).toBeInTheDocument();
-    expect(screen.getByText('Morty')).toBeInTheDocument();
-    expect(screen.getByText('Summer')).toBeInTheDocument();
+  test('should return the correct language states for "es"', () => {
+    const result = langStates('es');
+    expect(result).toEqual({
+      langStatus: 'Estatus',
+      langSpecies: 'Especies',
+      langPrevBtn: 'Anterior',
+      langNextBtn: 'Siguiente',
+      langPage: 'Página',
+      langOf: 'de'
+    });
   });
 });
