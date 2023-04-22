@@ -1,17 +1,17 @@
 <div class="container">
-  <ul class="charactersContainer">
-    <li *ngFor="let character of characters">
+  <ul class="container__ul characters-container">
+    <li *ngFor="let character of characters" class="container__li">
       <div class="card">
-        <div class="charactersImgContainer">
-            <img
-              [src]="character.image"
-              [alt]="character.name"
-              class="card-img-bottom"
-            />
-          </div>
+        <div class="characters-img-container">
+          <img
+            [src]="character.image"
+            [alt]="character.name"
+            class="characters-img-container__img card-img-bottom"
+          />
+        </div>
         <div class="card-body">
-          <h3 class="card-title">{{ character.name }}</h3>
-          <p class="card-text">Casa: {{ character.house }}</p>
+          <h3 class="card__title">{{ character.name }}</h3>
+          <p class="card__text">Casa: {{ character.house }}</p>
         </div>
       </div>
     </li>
