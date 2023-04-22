@@ -2,12 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-interface Character {
-  name: string;
-  house: string;
-  image: string;
-}
+import { Character } from '../components/character/character.interface';
 
 @Injectable({
   providedIn: 'root'

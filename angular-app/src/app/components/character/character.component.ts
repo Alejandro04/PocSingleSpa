@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CharacterService } from 'src/app/services/character.service';
 import { Subscription } from 'rxjs';
+import { Character } from './character.interface';
 
 @Component({
   selector: 'app-character',
@@ -9,7 +10,8 @@ import { Subscription } from 'rxjs';
 })
 export class CharacterComponent implements OnInit, OnDestroy {
   private charactersSubscription: Subscription = new Subscription;
-  public characters:any;
+  public characters:Character[] = [];
+  public loading = true;
 
   constructor(
     private character: CharacterService
@@ -20,13 +22,18 @@ export class CharacterComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.charactersSubscription.unsubscribe()
+   // this.charactersSubscription.unsubscribe()
   }
 
   public getCharacters(){
-    this.charactersSubscription = this.character.getCharacters().subscribe((data: any[]) => {
-        this.characters = data;
-    });
+     this.charactersSubscription = this.character.getCharacters().subscribe(
+      (characters) => {
+        this.characters = characters;
+        this.loading = false;
+      },
+      (error) => {
+        //
+      }
+    );
   }
-  titulo = 'Este es mi primer componente en Angular';
 }
