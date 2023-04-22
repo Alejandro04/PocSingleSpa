@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { APP_BASE_HREF } from '@angular/common';
 import { CharacterComponent } from './components/character/character.component';
-import { Langs } from './langStates/utils';
+import { Langs } from './langStates/Langs';
 
 @NgModule({
   declarations: [

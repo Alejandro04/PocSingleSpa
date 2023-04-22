@@ -32,10 +32,6 @@ export class CharacterComponent extends Langs implements OnInit, OnChanges, OnDe
     this.getLang()
   }
    
-  public getLang() {
-    // this.langs
-  }
-
   public getCharacters(){
      this.charactersSubscription = this.characterService.getCharacters().subscribe(
       (characters) => {
