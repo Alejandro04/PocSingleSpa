@@ -2,11 +2,6 @@
   <div class="spinner"></div>
 </div>
 
-// falta: 
-  1. agregar los tests
-  2. pasar el idioma
-  3. responder preguntas
-
 <div class="container">
   <ul class="container__ul characters-container">
     <li *ngFor="let character of characters" class="container__li">
@@ -20,8 +15,8 @@
         </div>
         <div class="card-body">
           <h3 class="card__title">{{ character.name }}</h3>
-          <p class="card__text"> {{ langHouse }}: {{ character.house }}</p>
-          <p class="card__text"> {{ langActor }}: {{ character.actor }}</p>
+          <p class="card__text">{{ langHouse }}: {{ character.house }}</p>
+          <p class="card__text">{{ langActor }}: {{ character.actor }}</p>
         </div>
       </div>
     </li>

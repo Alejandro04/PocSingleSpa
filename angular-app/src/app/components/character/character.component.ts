@@ -1,34 +1,31 @@
-import { Component, OnInit, OnDestroy, OnChanges, ChangeDetectorRef, SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges, ChangeDetectorRef } from '@angular/core';
 import { CharacterService } from 'src/app/services/character.service';
-import { LangService } from 'src/app/services/lang.service';
 import { Subscription } from 'rxjs';
 import { Character } from './character.interface';
-import langStates from './langStates';
+import { Langs } from 'src/app/langStates/Langs';
+import { LangService } from 'src/app/services/lang.service';
 
 @Component({
   selector: 'app-character',
   templateUrl: './character.component.html',
   styleUrls: ['./character.component.css']
 })
-export class CharacterComponent implements OnInit, OnChanges, OnDestroy {
+export class CharacterComponent extends Langs implements OnInit, OnChanges, OnDestroy {
   private charactersSubscription: Subscription = new Subscription;
-  private langSubscription: Subscription = new Subscription;
   public characters:Character[] = [];
   public loading = true;
-  public langActor:string | any;
-  public langHouse:string | any;
 
   constructor(
     private characterService: CharacterService,
-    private langService: LangService,
-    private changeDetectorRef: ChangeDetectorRef
+    langService: LangService,
+    changeDetectorRef: ChangeDetectorRef
   ){
-    this.getLang()
+    super(langService, changeDetectorRef);
   }
-
+  
   ngOnInit(): void {
     this.getCharacters()
-    this.getLang()
+    super.ngOnInit();
   }
 
   ngOnChanges(): void {
@@ -36,12 +33,7 @@ export class CharacterComponent implements OnInit, OnChanges, OnDestroy {
   }
    
   public getLang() {
-    this.langSubscription = this.langService.lang$.subscribe(lang => {
-      const { langActor, langHouse } = langStates(lang);
-      this.langActor = langActor;
-      this.langHouse = langHouse;
-      this.changeDetectorRef.detectChanges();
-    });
+    // this.langs
   }
 
   public getCharacters(){
@@ -58,6 +50,6 @@ export class CharacterComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnDestroy(): void {
     this.charactersSubscription.unsubscribe();
-    this.langSubscription.unsubscribe();
+    super.ngOnDestroy();
   }
 }
