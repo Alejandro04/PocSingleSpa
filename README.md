@@ -37,7 +37,7 @@ $ npm install
 Ricky and Morty API https://rickandmortyapi.com/
 This API have pagination
 
-Harry Potter API https://hp-api.onrender.com/api/characters
+Harry Potter API https://hp-api.onrender.com/
 This API not have pagination
 
 
