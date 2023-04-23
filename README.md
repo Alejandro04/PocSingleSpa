@@ -31,6 +31,16 @@ $ npm install
   **http://localhost:9000/react** -> React App
   **http://localhost:9000/angular/** -> Angular App
 
+
+## API's
+
+Ricky and Morty API https://rickandmortyapi.com/
+This API have pagination
+
+Harry Potter API https://hp-api.onrender.com/api/characters
+This API not have pagination
+
+
 ## Questions
 
 ## What is accessibility? How do you achieve it?
