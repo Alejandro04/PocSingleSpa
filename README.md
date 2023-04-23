@@ -81,7 +81,7 @@ https://alejandroroa.medium.com/event-loop-y-performance-con-node-js-3cbed345783
 
 ## If you are getting too many API calls being made from your hooks, what can you do to prevent this?
 
-Yes, id can prevent this using lodash-debounce or axios cancellation
+Yes, I can prevent this using lodash-debounce or axios cancellation
 
 This libraries are two different things that serve different purposes in JavaScript applications.
 
